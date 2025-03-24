@@ -1,4 +1,3 @@
-import React from 'react';
 import { OllamaEmbeddings, ChatOllama } from '@langchain/ollama';
 import { ChatGroq } from '@langchain/groq';
 import { JSONLoader } from 'langchain/document_loaders/fs/json';
@@ -7,7 +6,7 @@ import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 // import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { pull } from 'langchain/hub';
 import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
-const Home = () => {
+function Home() {
 	const testing = async () => {
 		const embed = new OllamaEmbeddings({ model: 'nomic-embed-text' });
 
@@ -70,6 +69,6 @@ const Home = () => {
 	};
 	testing();
 	return <></>;
-};
+}
 
 export default Home;
