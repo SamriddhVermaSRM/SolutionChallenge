@@ -1,31 +1,35 @@
 {
-  "name": "assdoc",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.0.15",
-    "ollama": "^0.5.14",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.4.0",
-    "tailwindcss": "^4.0.15"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react-swc": "^3.8.0",
-    "eslint": "^9.21.0",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^15.15.0",
-    "vite": "^6.2.0"
-  }
+	"name": "assdoc",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"lint": "eslint .",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@langchain/community": "^0.3.37",
+		"@langchain/core": "^0.3.43",
+		"@langchain/groq": "^0.2.0",
+		"@langchain/langgraph": "^0.2.57",
+		"@langchain/ollama": "^0.2.0",
+		"@tailwindcss/vite": "^4.0.15",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-router-dom": "^7.4.0",
+		"tailwindcss": "^4.0.15"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.21.0",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
+		"@vitejs/plugin-react-swc": "^3.8.0",
+		"eslint": "^9.21.0",
+		"eslint-plugin-react-hooks": "^5.1.0",
+		"eslint-plugin-react-refresh": "^0.4.19",
+		"globals": "^15.15.0",
+		"vite": "^6.2.0"
+	}
 }
