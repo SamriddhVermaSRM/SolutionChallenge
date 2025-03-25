@@ -9,7 +9,7 @@ import { JSONLoader } from 'langchain/document_loaders/fs/json';
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
 
-const testing = async () => {
+const testing = async (JSONdata, question) => {
 	//Ollama (on cmd: ollama pull nomic-embed-text)
 	const embed = new OllamaEmbeddings({ model: 'nomic-embed-text' });
 
@@ -29,12 +29,6 @@ const testing = async () => {
 
 	// DB to store embeddings
 	const vectorStore = new MemoryVectorStore(embed);
-
-	// User data, from report save as JSON
-	const JSONdata = {
-		content:
-			'my name is Samriddh Verma and I am a software engineer with over 10 years of experience in web development. I have a strong background in JavaScript, HTML, CSS, and various frameworks such as React and Angular. I am passionate about creating user-friendly applications and continuously learning new technologies to improve my skills. In my free time, I enjoy contributing to open-source projects and sharing my knowledge with the developer community.',
-	};
 
 	// JSON to Blob
 	const lissss = new Blob([JSON.stringify(JSONdata)], {
@@ -89,11 +83,10 @@ const testing = async () => {
 		checkpointer: memory,
 	});
 
-	// message
+	// message with question
 	const msg = {
 		role: 'user',
-		content:
-			'what are the tech stack this person knows, after that tell me what each tech stack can do',
+		content: question,
 	};
 
 	// usage
@@ -112,4 +105,14 @@ const testing = async () => {
 	const prevHis = await agent.getState(config1);
 	console.log(prevHis);
 };
-testing();
+
+// create API as follows
+// take input of basic details from user and save it into localstorage then while calling send that data with each req
+const JSONdata = {
+	name: 'Samriddh Pratap Verma',
+	description:
+		' I am a software engineer with over 10 years of experience in web development. I have a strong background in JavaScript, HTML, CSS, and various frameworks such as React and Angular. I am passionate about creating user-friendly applications and continuously learning new technologies to improve my skills. In my free time, I enjoy contributing to open-source projects and sharing my knowledge with the developer community.',
+};
+const question =
+	'what are the tech stack this person knows, after that tell me what each tech stack can do, what is the persons name?';
+testing(JSONdata, question);
