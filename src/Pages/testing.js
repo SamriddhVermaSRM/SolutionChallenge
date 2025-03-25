@@ -8,8 +8,6 @@ import { ChatGroq } from '@langchain/groq';
 import { JSONLoader } from 'langchain/document_loaders/fs/json';
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
-// for typeScript only
-// import { ChatPromptTemplate } from '@langchain/core/prompts';
 
 const testing = async () => {
 	//Ollama (on cmd: ollama pull nomic-embed-text)
