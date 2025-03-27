@@ -84,7 +84,7 @@ export async function POST(req: Request) {
 	// message with system prompt
 	const systemPrompt = {
 		role: 'system',
-		content: `You are a medical assistant. Answer the question based on the symptoms provided. If you don't know the answer, say "I don't know".`,
+		content: `You are a medical assistant. Answer the question based on the symptoms provided.`,
 	};
 
 	// usage
