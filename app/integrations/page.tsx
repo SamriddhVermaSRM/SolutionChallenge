@@ -117,21 +117,6 @@ export default function IntegrationsPage() {
 	return (
 		<>
 			<div className='flex min-h-screen flex-col'>
-				{/* Navigation */}
-				<header className='sticky top-0 z-40 w-full border-b bg-background'>
-					<div className='container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0'>
-						<div className='flex gap-6 md:gap-10'>
-							<Link
-								href='/'
-								className='flex items-center space-x-2'
-							>
-								<Zap className='h-6 w-6 text-primary' />
-								<span className='inline-block font-bold'>HealthAssist AI</span>
-							</Link>
-						</div>
-					</div>
-				</header>
-
 				<div className='container py-8 md:py-12'>
 					<div className='flex items-center justify-between mb-8'>
 						<div className='flex items-center'>

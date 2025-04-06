@@ -1,4 +1,6 @@
 import { OllamaEmbeddings, ChatOllama } from '@langchain/ollama';
+import { ChatVertexAI } from '@langchain/google-vertexai';
+import { VertexAIEmbeddings } from '@langchain/google-vertexai';
 import { z } from 'zod';
 import { tool } from '@langchain/core/tools';
 import { MemorySaver } from '@langchain/langgraph';
@@ -110,8 +112,20 @@ export const llm = new ChatOllama({
 	stop: ['\n\n'],
 });
 
-//Ollama (on cmd: ollama pull nomic-embed-text)
+// Ollama (on cmd: ollama pull nomic-embed-text)
 export const embed = new OllamaEmbeddings({ model: 'nomic-embed-text' });
+
+// Vertex AI
+// export const llm = new ChatVertexAI({
+// 	model: 'gemini-1.5-flash',
+// 	temperature: 0,
+// 	apiKey: 'AIzaSyCdAcjv12d_Ni2qhhIsYQtCQZW28cfKejc',
+// });
+
+// export const embed = new VertexAIEmbeddings({
+// 	model: 'text-embedding-004',
+// 	apiKey: 'AIzaSyCdAcjv12d_Ni2qhhIsYQtCQZW28cfKejc',
+// });
 
 // DB to store embeddings
 export const vectorStore = new MemoryVectorStore(embed);

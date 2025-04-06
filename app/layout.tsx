@@ -26,7 +26,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<Nav/>
+					<Nav />
 					{children}
 				</ThemeProvider>
 			</body>
@@ -35,3 +35,4 @@ export default function RootLayout({
 }
 
 import './globals.css';
+import { IconURL } from 'next/dist/lib/metadata/types/metadata-types';
