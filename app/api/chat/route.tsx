@@ -136,7 +136,27 @@ export const memory = new MemorySaver();
 // RAG agent with memory and retrieve function to auto create retriever queries
 export const agent = createReactAgent({
 	llm: llm,
-	tools: [],
+	tools: [
+		tool(
+			async ({ query }) => {
+				// const retrievedDocs = await vectorStore.similaritySearch(query, 2);
+				// const serialized = retrievedDocs
+				// 	.map(
+				// 		(doc) =>
+				// 			`Source: ${doc.metadata.source}\nContent: ${doc.pageContent}`
+				// 	)
+				// 	.join('\n');
+				return "no doc found";
+			},
+			{
+				name: 'retrieve',
+				description:
+					'Retrieve the patient history, which can be used to better answer the question.',
+				schema: z.object({ query: z.string() }),
+				responseFormat: 'content_and_artifact',
+			}
+		),
+	],
 	checkpointer: memory,
 });
 
