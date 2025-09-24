@@ -70,12 +70,12 @@ export async function PUT(req: Request) {
 export async function POST(req: Request) {
 	const { question } = await req.json();
 
-	// GROQ
-	// const llm = new ChatGroq({
-	// 	model: 'llama-3.3-70b-versatile',
-	// 	temperature: 0,
-	// 	apiKey: 'YOUR_GROQ_API_KEY_HERE',
-	// });
+	GROQ
+	const llm = new ChatGroq({
+		model: 'llama-3.3-70b-versatile',
+		temperature: 0,
+		apiKey: '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',
+	});
 
 	// message with question
 	const msg = {
@@ -113,7 +113,7 @@ export const llm = new ChatOllama({
 });
 
 // Ollama (on cmd: ollama pull nomic-embed-text)
-export const embed = new OllamaEmbeddings({ model: 'nomic-embed-text' });
+// export const embed = new OllamaEmbeddings({ model: 'nomic-embed-text' });
 
 // Vertex AI
 // export const llm = new ChatVertexAI({
@@ -128,7 +128,7 @@ export const embed = new OllamaEmbeddings({ model: 'nomic-embed-text' });
 // });
 
 // DB to store embeddings
-export const vectorStore = new MemoryVectorStore(embed);
+// export const vectorStore = new MemoryVectorStore(embed);
 
 // Memory for chat history
 export const memory = new MemorySaver();
@@ -136,27 +136,6 @@ export const memory = new MemorySaver();
 // RAG agent with memory and retrieve function to auto create retriever queries
 export const agent = createReactAgent({
 	llm: llm,
-	tools: [
-		tool(
-			async ({ query }) => {
-				const retrievedDocs = await vectorStore.similaritySearch(query, 2);
-				const serialized = retrievedDocs
-					.map(
-						(doc) =>
-							`Source: ${doc.metadata.source}\nContent: ${doc.pageContent}`
-					)
-					.join('\n');
-				return [serialized, retrievedDocs];
-			},
-			{
-				name: 'retrieve',
-				description:
-					'Retrieve the patient history, which can be used to better answer the question.',
-				schema: z.object({ query: z.string() }),
-				responseFormat: 'content_and_artifact',
-			}
-		),
-	],
 	checkpointer: memory,
 });
 
