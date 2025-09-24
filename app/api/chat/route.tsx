@@ -136,6 +136,7 @@ export const memory = new MemorySaver();
 // RAG agent with memory and retrieve function to auto create retriever queries
 export const agent = createReactAgent({
 	llm: llm,
+	tools: [],
 	checkpointer: memory,
 });
 
